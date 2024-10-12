@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = []
@@ -29,8 +28,10 @@ class Migration(migrations.Migration):
                     "additional_info",
                     models.TextField(blank=True, default="", null=True),
                 ),
-                ("created_at", models.DateTimeField(auto_now_add=True, null=True)),
-                ("updated_at", models.DateTimeField(auto_now=True, null=True)),
+                ("created_at", models.
+                 DateTimeField(auto_now_add=True, null=True)),
+                ("updated_at", models.
+                 DateTimeField(auto_now=True, null=True)),
             ],
         ),
         migrations.CreateModel(
@@ -59,9 +60,12 @@ class Migration(migrations.Migration):
                         max_length=50,
                     ),
                 ),
-                ("additional_info", models.TextField(blank=True, null=True)),
-                ("created_at", models.DateTimeField(auto_now_add=True, null=True)),
-                ("updated_at", models.DateTimeField(auto_now=True, null=True)),
+                ("additional_info", models.TextField
+                 (blank=True, null=True)),
+                ("created_at", models.DateTimeField
+                 (auto_now_add=True, null=True)),
+                ("updated_at", models.DateTimeField
+                 (auto_now=True, null=True)),
                 (
                     "assignee",
                     models.ForeignKey(

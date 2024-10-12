@@ -1,7 +1,8 @@
+import os
+
 from django.core.management import BaseCommand
 
 from users.models import User
-import os
 
 
 class Command(BaseCommand):
@@ -11,11 +12,18 @@ class Command(BaseCommand):
 
         if not email or not password:
             self.stdout.write(
-                self.style.ERROR('SUPERUSER_EMAIL or SUPERUSER_PASSWORD not set in environment variables.'))
+                self.style.ERROR(
+                    "SUPERUSER_EMAIL or SUPERUSER_PASSWORD "
+                    "not set in environment variables."
+                )
+            )
             return
 
         if User.objects.filter(email=email).exists():
-            self.stdout.write(self.style.WARNING(f"Superuser with email {email} already exists."))
+            self.stdout.write(
+                self.style.WARNING(f"Superuser with email"
+                                   f" {email} already exists.")
+            )
         else:
             user = User.objects.create(email=email)
             user.is_staff = True
@@ -23,4 +31,6 @@ class Command(BaseCommand):
             user.is_superuser = True
             user.set_password(password)
             user.save()
-            self.stdout.write(self.style.SUCCESS(f"Superuser {email} created successfully."))
+            self.stdout.write(
+                self.style.SUCCESS(f"Superuser {email} created successfully.")
+            )

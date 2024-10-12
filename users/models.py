@@ -6,9 +6,11 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(unique=True, verbose_name="Email")
-    phone = models.CharField(max_length=35, blank=True, null=True, verbose_name="Tel")
+    phone = models.CharField(max_length=35, blank=True,
+                             null=True, verbose_name="Tel")
 
-    # Указываем, что для аутентификации будет использоваться email, а не username.
+    # Указываем, что для аутентификации будет
+    # использоваться email, а не username.
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
